@@ -11,5 +11,10 @@ const mix = require('laravel-mix');
  |
  */
 
+ /**
+  * Add this script to install and open port automatically
+  */
+mix.browserSync();
+
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
