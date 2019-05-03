@@ -14,8 +14,15 @@ class CreateTicketsTable extends Migration
     public function up()
     {
         Schema::create('tickets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
+            $table->integer('company_id')->unsigned();
             $table->timestamps();
+            $table->string('name');
+            $table->string('subject');
+            $table->longText('message');
+            $table->integer('status');
+
+            $table->foreign('company_id')->references('id')->on('companies');
         });
     }
 

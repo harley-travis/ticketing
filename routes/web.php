@@ -11,24 +11,40 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+	
+	if( auth()->check() == null ) {
+		return redirect('/login');
+	} else {
+		return view('dashboard.dashboard');
+	}
+    
 });
 
 Route::get('dashboard', function () {
+    return view('dashboard.dashboard');
+})->name('dashboard.dashboard');
 
-    // $first_time_login = false;
-    // if (Auth::user()->first_time_login) {
-    //     $first_time_login = true;
-    //     Auth::user()->first_time_login = 1; // Flip the flag to true
-    //     Auth::user()->save(); // By that you tell it to save the new flag value into the users table
-    // }
+Route::group(['prefix' => 'tickets'], function() {
+	$c = 'TicketController';
 
-    // return view('dashboard.overview', ['first_time_login' => $first_time_login]);
-    return view('dashboard.overview');
-})->name('dashboard.overview');
+	Route::get('', [
+		'uses'	=> "$c@index",
+		'as'	=> 'tickets.overview'
+    ]);
+    
+    Route::get('view/{id}', [
+		'uses'	=> "$c@show",
+		'as'	=> 'tickets.view'
+	]);
+
+});
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/home', 'HomeController@index')->name('home');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');

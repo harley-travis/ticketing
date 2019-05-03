@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
+use Auth;
+use DB;
 use App\Ticket;
 use Illuminate\Http\Request;
+use Illuminate\Session\Store;
 
 class TicketController extends Controller
 {
@@ -12,9 +16,16 @@ class TicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        
+        $company_id = Auth::user()->company_id;
+        $tickets = Ticket::where('company_id', '=', $company_id)
+            ->where('status', '!=', '5')
+            ->orderBy('created_at', 'ASC')
+            ->paginate(15);
+
+        return view('tickets.overview', ['tickets' => $tickets]);
+
     }
 
     /**
@@ -44,9 +55,11 @@ class TicketController extends Controller
      * @param  \App\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
-    {
-        //
+    public function show(Ticket $ticket, $id) {
+
+        $ticket = Ticket::find($id);
+        return view('tickets.view', ['ticket' => $ticket]);
+
     }
 
     /**

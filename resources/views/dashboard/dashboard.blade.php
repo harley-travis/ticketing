@@ -2,7 +2,7 @@
 <!-- https://laracasts.com/discuss/channels/javascript/i-need-to-show-pop-up-only-first-time-user-login -->
 
 
-@extends('layouts.app')
+@extends('layouts.body')
 
 @section('content')
 
