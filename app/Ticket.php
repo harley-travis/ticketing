@@ -22,7 +22,8 @@ class Ticket extends Model {
         'subject', 
         'message',
         'status',
-        'company_id'
+        'company_id',
+        'user_id',
     ];
 
 }

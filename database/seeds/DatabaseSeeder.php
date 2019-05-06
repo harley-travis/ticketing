@@ -36,9 +36,27 @@ class DatabaseSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'company_id' => '1',
+            'name' => 'Steve Rogers',
+            'email' =>'steve@gmail.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
             'company_id' => '2',
             'name' => 'George Bluth',
             'email' =>'george@bluth.com',
+            'password' => bcrypt('test'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
+
+        DB::table('users')->insert([
+            'company_id' => '2',
+            'name' => 'Michael Bluth',
+            'email' =>'michael@bluth.com',
             'password' => bcrypt('test'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
@@ -51,6 +69,7 @@ class DatabaseSeeder extends Seeder
             'message' => 'I logged on this morning and he was not responding',
             'status' => '0',
             'company_id' => '1',
+            'user_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -61,6 +80,7 @@ class DatabaseSeeder extends Seeder
             'message' => 'Getting a 404 error message when logging on to the system',
             'status' => '1',
             'company_id' => '1',
+            'user_id' => '1',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -71,6 +91,7 @@ class DatabaseSeeder extends Seeder
             'message' => 'Still waiting for our update on the security systems.',
             'status' => '3',
             'company_id' => '1',
+            'user_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -81,6 +102,7 @@ class DatabaseSeeder extends Seeder
             'message' => 'I cant find my website. How do I find it?',
             'status' => '0',
             'company_id' => '1',
+            'user_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);
@@ -91,6 +113,7 @@ class DatabaseSeeder extends Seeder
             'message' => 'We are out of juice. Please refill!',
             'status' => '0',
             'company_id' => '2',
+            'user_id' => '2',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

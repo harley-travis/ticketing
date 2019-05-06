@@ -16,13 +16,15 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
+            $table->integer('user_id')->unsigned();
             $table->timestamps();
             $table->string('name');
             $table->string('subject');
             $table->longText('message');
-            $table->integer('status');
+            $table->integer('status')->comment('0 = new, 1 = in progress, 2 = past date, 3 = completed');
 
             $table->foreign('company_id')->references('id')->on('companies');
+            $table->foreign('user_id')->references('id')->on('companies');
         });
     }
 

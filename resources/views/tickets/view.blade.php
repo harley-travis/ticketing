@@ -4,7 +4,7 @@
 
 	<div class="row page-header">
 		<div class="col">
-			<h2 class="">Ticket #{{ $ticket->id }}</h2>
+			<h3 class="">Ticket #{{ $ticket->id }}</h3>
 		</div>
 		<div class="col text-right">
 
