@@ -16,9 +16,10 @@ class CreateTicketsTable extends Migration
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('company_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->integer('user_id')->unsigned()->nullable();
             $table->timestamps();
             $table->string('name');
+            $table->string('email');
             $table->string('subject');
             $table->longText('message');
             $table->integer('status')->comment('0 = new, 1 = in progress, 2 = past date, 3 = completed');

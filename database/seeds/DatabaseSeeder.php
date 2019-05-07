@@ -65,6 +65,7 @@ class DatabaseSeeder extends Seeder
         // TICKETS
         DB::table('tickets')->insert([
             'name' => 'Happy Hogan',
+            'email' => 'happy@gmail.com', 
             'subject' => 'Jarvis is not working', 
             'message' => 'I logged on this morning and he was not responding',
             'status' => '0',
@@ -76,6 +77,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tickets')->insert([
             'name' => 'Pepper Potts',
+            'email' => 'pepper@gmail.com', 
             'subject' => 'Servers are down', 
             'message' => 'Getting a 404 error message when logging on to the system',
             'status' => '1',
@@ -87,6 +89,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tickets')->insert([
             'name' => 'Nick Fury',
+            'email' => 'fury@gmail.com', 
             'subject' => 'S.H.E.I.L.D. Security Systems Update', 
             'message' => 'Still waiting for our update on the security systems.',
             'status' => '3',
@@ -98,6 +101,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tickets')->insert([
             'name' => 'Maria Hill',
+            'email' => 'hill@gmail.com', 
             'subject' => 'Cant find my website', 
             'message' => 'I cant find my website. How do I find it?',
             'status' => '0',
@@ -109,6 +113,7 @@ class DatabaseSeeder extends Seeder
 
         DB::table('tickets')->insert([
             'name' => 'Buster Bluth',
+            'email' => 'buster@gmail.com', 
             'subject' => 'Out of juice in the break room', 
             'message' => 'We are out of juice. Please refill!',
             'status' => '0',

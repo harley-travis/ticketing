@@ -44,6 +44,21 @@ Route::group(['prefix' => 'tickets'], function() {
 
 });
 
+Route::group(['prefix' => 'submit'], function() {
+	$c = 'TicketController';
+
+	Route::get('company/{id}', [
+		'uses'	=> "$c@submitIndex",
+		'as'	=> 'submission.submit'
+    ]);
+    
+    Route::post('company/submit/success', [
+		'uses'	=> "$c@create",
+		'as'	=> 'submit.ticket'
+	]);
+
+});
+
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');

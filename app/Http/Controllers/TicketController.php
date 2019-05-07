@@ -29,13 +29,38 @@ class TicketController extends Controller
     }
 
     /**
+     * Display the view for the ticket submittion portal
+     */
+    public function submitIndex($id) {
+        $company = Company::find($id);
+        return view('submission.submit', ['company' => $company]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create(Request $request) {
+        // attachment
+        $file = $request->resume->storeAs('companies/'.$request->input('company_id').'/attachments', $request->input('name').'_'.time().'_screenshot.jpg', 'public');
+    
+        $ticket = new Ticket([
+            'name'          => $request->input('name'), 
+            'email'         => $request->input('email'), 
+            'subject'       => $request->input('subject'), 
+            'message'       => $request->input('message'), 
+            'status'        => 0, 
+            'company_id'    => $request->input('company_id'),
+            'user_id'       => null,
+        ]);
+
+        $ticket->save();
+
+        return redirect()
+                ->back()
+                ->with('info', 'Good news, you successfully submitted your ticket! We will reach out to you shortly');
+    
     }
 
     /**
