@@ -8,9 +8,10 @@ use DB;
 use App\Ticket;
 use Illuminate\Http\Request;
 use Illuminate\Session\Store;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
-class TicketController extends Controller
-{
+class TicketController extends Controller {
+
     /**
      * Display a listing of the resource.
      *
@@ -43,7 +44,7 @@ class TicketController extends Controller
      */
     public function create(Request $request) {
         // attachment
-        $file = $request->resume->storeAs('companies/'.$request->input('company_id').'/attachments', $request->input('name').'_'.time().'_screenshot.jpg', 'public');
+        $file = $request->attachment->storeAs('companies/'.$request->input('company_id').'/attachments', $request->input('name').'_'.time().'_screenshot.jpg', 'public');
     
         $ticket = new Ticket([
             'name'          => $request->input('name'), 

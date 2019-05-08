@@ -19,11 +19,17 @@ class Ticket extends Model {
     
     protected $fillable = [
         'name',
+        'email',
         'subject', 
         'message',
         'status',
         'company_id',
         'user_id',
     ];
+
+
+    public function company() {
+        return $this->belongsTo(Company::class);
+    }
 
 }
